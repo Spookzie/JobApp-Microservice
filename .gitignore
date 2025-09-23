@@ -1,0 +1,45 @@
+# ---------------------
+# IntelliJ IDEA
+# ---------------------
+.idea/
+*.iml
+out/
+*.ipr
+*.iws
+
+# IntelliJ project-specific
+shelf/
+workspace.xml
+
+# ---------------------
+# Build output
+# ---------------------
+**/target/
+**/build/
+**/.gradle/
+**/.mvn/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# ---------------------
+# Logs
+# ---------------------
+*.log
+**/logs/
+**/log/
+
+# ---------------------
+# OS-specific
+# ---------------------
+.DS_Store
+Thumbs.db
+
+# ---------------------
+# Misc
+# ---------------------
+*.class
+*.jar
+*.war
+*.ear
+/.env
