@@ -1,4 +1,4 @@
-package com.spookzie.reviewms.review;
+package com.spookzie.companyms.company.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,19 +8,17 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name = "reviews")
+@Table(name = "companies")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Review
+public class Company
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
+    private String name;
     private String description;
-    private double rating;
-    private Long companyId;
 }

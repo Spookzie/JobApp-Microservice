@@ -1,8 +1,8 @@
-package com.spookzie.companyms.company.impl;
+package com.spookzie.companyms.company.services.impl;
 
-import com.spookzie.companyms.company.Company;
-import com.spookzie.companyms.company.CompanyRepository;
-import com.spookzie.companyms.company.CompanyService;
+import com.spookzie.companyms.company.domain.Company;
+import com.spookzie.companyms.company.repositories.CompanyRepository;
+import com.spookzie.companyms.company.services.CompanyService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

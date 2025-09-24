@@ -1,5 +1,8 @@
-package com.spookzie.jobms.job;
+package com.spookzie.jobms.job.controllers;
 
+import com.spookzie.jobms.job.domain.entities.Job;
+import com.spookzie.jobms.job.domain.dtos.JobDto;
+import com.spookzie.jobms.job.services.JobService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +21,13 @@ public class JobController
 
     /*  GET     */
     @GetMapping
-    public ResponseEntity<List<Job>> findAll()
+    public ResponseEntity<List<JobDto>> findAll()
     {
-        return new ResponseEntity<>(
-                this.jobService.findAll(),
-                HttpStatus.OK
-        );
+        List<JobDto> jobsFound = this.jobService.findAll();
+        if(jobsFound.isEmpty())
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+
+        return new ResponseEntity<>(jobsFound, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

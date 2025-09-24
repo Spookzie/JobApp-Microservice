@@ -1,4 +1,6 @@
-package com.spookzie.reviewms.review;
+package com.spookzie.reviewms.review.services;
+
+import com.spookzie.reviewms.review.domain.Review;
 
 import java.util.List;
 

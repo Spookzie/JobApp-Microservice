@@ -1,4 +1,6 @@
-package com.spookzie.companyms.company;
+package com.spookzie.companyms.company.services;
+
+import com.spookzie.companyms.company.domain.Company;
 
 import java.util.List;
 

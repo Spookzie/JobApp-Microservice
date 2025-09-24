@@ -1,4 +1,4 @@
-package com.spookzie.jobms.job;
+package com.spookzie.jobms.job.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

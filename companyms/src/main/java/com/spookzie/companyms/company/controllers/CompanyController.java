@@ -1,5 +1,7 @@
-package com.spookzie.companyms.company;
+package com.spookzie.companyms.company.controllers;
 
+import com.spookzie.companyms.company.services.CompanyService;
+import com.spookzie.companyms.company.domain.Company;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

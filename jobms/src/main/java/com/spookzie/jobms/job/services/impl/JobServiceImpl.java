@@ -1,12 +1,15 @@
-package com.spookzie.jobms.job.impl;
+package com.spookzie.jobms.job.services.impl;
 
-import com.spookzie.jobms.job.Job;
-import com.spookzie.jobms.job.JobRepository;
-import com.spookzie.jobms.job.JobService;
+import com.spookzie.jobms.job.domain.entities.Job;
+import com.spookzie.jobms.job.repositories.JobRepository;
+import com.spookzie.jobms.job.services.JobService;
+import com.spookzie.jobms.job.domain.dtos.JobDto;
+import com.spookzie.jobms.job.mappers.JobWithCompanyMapper;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,13 +19,19 @@ import java.util.Optional;
 public class JobServiceImpl implements JobService
 {
     private final JobRepository jobRepo;
+    private final JobWithCompanyMapper jobWithCompanyMapper;
 
 
     /*  GET     */
     @Override
-    public List<Job> findAll()
+    public List<JobDto> findAll()
     {
-        return this.jobRepo.findAll();
+        List<Job> jobs = this.jobRepo.findAll();
+
+        return jobs
+                .stream()
+                .map(this.jobWithCompanyMapper::toDto)
+                .toList();
     }
 
     @Override

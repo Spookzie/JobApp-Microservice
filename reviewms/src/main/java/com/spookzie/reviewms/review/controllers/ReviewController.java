@@ -1,5 +1,7 @@
-package com.spookzie.reviewms.review;
+package com.spookzie.reviewms.review.controllers;
 
+import com.spookzie.reviewms.review.services.ReviewService;
+import com.spookzie.reviewms.review.domain.Review;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

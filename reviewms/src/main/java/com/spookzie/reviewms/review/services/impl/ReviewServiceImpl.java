@@ -1,8 +1,8 @@
-package com.spookzie.reviewms.review.impl;
+package com.spookzie.reviewms.review.services.impl;
 
-import com.spookzie.reviewms.review.Review;
-import com.spookzie.reviewms.review.ReviewRepository;
-import com.spookzie.reviewms.review.ReviewService;
+import com.spookzie.reviewms.review.domain.Review;
+import com.spookzie.reviewms.review.repositories.ReviewRepository;
+import com.spookzie.reviewms.review.services.ReviewService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

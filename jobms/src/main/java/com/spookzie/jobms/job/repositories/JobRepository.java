@@ -1,5 +1,6 @@
-package com.spookzie.jobms.job;
+package com.spookzie.jobms.job.repositories;
 
+import com.spookzie.jobms.job.domain.entities.Job;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

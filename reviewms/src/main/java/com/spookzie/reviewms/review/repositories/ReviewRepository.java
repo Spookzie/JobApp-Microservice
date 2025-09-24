@@ -1,5 +1,6 @@
-package com.spookzie.reviewms.review;
+package com.spookzie.reviewms.review.repositories;
 
+import com.spookzie.reviewms.review.domain.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
