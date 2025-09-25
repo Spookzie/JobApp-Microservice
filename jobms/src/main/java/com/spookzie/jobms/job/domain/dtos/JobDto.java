@@ -1,6 +1,5 @@
 package com.spookzie.jobms.job.domain.dtos;
 
-import com.spookzie.jobms.job.domain.entities.Job;
 import com.spookzie.jobms.job.domain.external.Company;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +9,12 @@ import lombok.Setter;
 @Setter
 public class JobDto
 {
-    private Job job;
+    private Long id;
+    private String title;
+    private String description;
+    private String minSalary;
+    private String maxSalary;
+    private String location;
+
     private Company company;
 }

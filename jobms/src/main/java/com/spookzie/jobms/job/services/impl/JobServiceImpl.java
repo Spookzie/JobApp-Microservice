@@ -9,7 +9,6 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,10 +34,11 @@ public class JobServiceImpl implements JobService
     }
 
     @Override
-    public Job findById(Long id)
+    public JobDto findById(Long id)
     {
-        return this.jobRepo.findById(id)
-                .orElse(null);
+        return this.jobWithCompanyMapper.toDto(
+                this.jobRepo.findById(id).orElse(null)
+        );
     }
 
 

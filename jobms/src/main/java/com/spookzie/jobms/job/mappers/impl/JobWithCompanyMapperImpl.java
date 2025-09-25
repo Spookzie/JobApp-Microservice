@@ -19,14 +19,21 @@ public class JobWithCompanyMapperImpl implements JobWithCompanyMapper
     @Override
     public JobDto toDto(Job job)
     {
-        JobDto jobDto = new JobDto();
-        jobDto.setJob(job);
+        if(job == null)
+            return null;
 
-        Company company = restTemplate.getForObject(
-                "http://localhost:8081/companies/" + job.getCompanyId(),
-                Company.class
+        JobDto jobDto = new JobDto();
+        jobDto.setId(job.getId());
+        jobDto.setTitle(job.getTitle());
+        jobDto.setDescription(job.getDescription());
+        jobDto.setLocation(job.getLocation());
+        jobDto.setMaxSalary(job.getMaxSalary());
+        jobDto.setMinSalary(job.getMinSalary());
+        jobDto.setCompany(
+                restTemplate.getForObject(
+                        "http://COMPANY-SERVICE:8081/companies/" + job.getCompanyId(),
+                        Company.class)
         );
-        jobDto.setCompany(company);
 
         return jobDto;
     }

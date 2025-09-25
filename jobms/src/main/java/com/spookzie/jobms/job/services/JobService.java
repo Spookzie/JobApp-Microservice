@@ -9,7 +9,7 @@ import java.util.List;
 public interface JobService
 {
     List<JobDto> findAll();
-    Job findById(Long id);
+    JobDto findById(Long id);
 
     void createJob(Job job);
 
