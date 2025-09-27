@@ -23,22 +23,19 @@ public class JobController
     @GetMapping
     public ResponseEntity<List<JobDto>> findAll()
     {
-        List<JobDto> jobsFound = this.jobService.findAll();
-        if(jobsFound.isEmpty())
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-
-        return new ResponseEntity<>(jobsFound, HttpStatus.OK);
+        return new ResponseEntity<>(
+                this.jobService.findAll(),
+                HttpStatus.OK
+        );
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<JobDto> findById(@PathVariable Long id)
     {
-        JobDto jobFound =  this.jobService.findById(id);
-
-        if(jobFound == null)
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
-        return new ResponseEntity<>(jobFound, HttpStatus.OK);
+        return new ResponseEntity<>(
+                this.jobService.findById(id),
+                HttpStatus.OK
+        );
     }
 
 
@@ -75,7 +72,7 @@ public class JobController
         Job updatedJob = this.jobService.updateJob(id, job);
 
         if(updatedJob != null)
-            return new ResponseEntity<>(updatedJob, HttpStatus.OK);
+            return new ResponseEntity<>(updatedJob, HttpStatus.NO_CONTENT);
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

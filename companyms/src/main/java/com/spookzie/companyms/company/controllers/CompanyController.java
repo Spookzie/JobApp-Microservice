@@ -22,22 +22,19 @@ public class CompanyController
     @GetMapping
     public ResponseEntity<List<Company>> findAll()
     {
-        List<Company> companiesFound = this.companyService.findAll();
-
-        if(companiesFound.isEmpty())
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-
-        return new ResponseEntity<>(companiesFound, HttpStatus.OK);
+        return new ResponseEntity<>(
+                this.companyService.findAll(),
+                HttpStatus.OK
+        );
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Company> findById(@PathVariable Long id)
     {
-        Company companyFound = this.companyService.findById(id);
-        if(companyFound != null)
-            return new ResponseEntity<>(companyFound, HttpStatus.OK);
-
-        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(
+                this.companyService.findById(id),
+                HttpStatus.OK
+        );
     }
 
 
@@ -73,7 +70,7 @@ public class CompanyController
     {
         boolean isDeleted = this.companyService.deleteById(id);
         if(isDeleted)
-            return new ResponseEntity<>("Company Deleted Successfully", HttpStatus.OK);
+            return new ResponseEntity<>("Company Deleted Successfully", HttpStatus.NO_CONTENT);
 
         return new ResponseEntity<>("Company doesn't exist", HttpStatus.NOT_FOUND);
     }

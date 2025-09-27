@@ -21,21 +21,19 @@ public class ReviewController
     @GetMapping
     public ResponseEntity<List<Review>> findAll(@RequestParam Long companyId)
     {
-        List<Review> reviews = this.reviewService.findAll(companyId);
-        if(reviews.isEmpty())
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-
-        return new ResponseEntity<>(reviews, HttpStatus.OK);
+        return new ResponseEntity<>(
+                this.reviewService.findAll(companyId),
+                HttpStatus.OK
+        );
     }
 
     @GetMapping("/{reviewId}")
     public ResponseEntity<Review> findById(@PathVariable Long reviewId)
     {
-        Review review = this.reviewService.findById(reviewId);
-        if(review != null)
-            return new ResponseEntity<>(review, HttpStatus.OK);
-
-        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(
+                this.reviewService.findById(reviewId),
+                HttpStatus.OK
+        );
     }
 
 
@@ -75,7 +73,7 @@ public class ReviewController
         boolean isDeleted = this.reviewService.deleteReview(reviewId);
 
         if(isDeleted)
-            return new ResponseEntity<>("Review deleted successfully", HttpStatus.OK);
+            return new ResponseEntity<>("Review deleted successfully", HttpStatus.NO_CONTENT);
 
         return new ResponseEntity<>("Unable to delete review", HttpStatus.NOT_FOUND);
     }

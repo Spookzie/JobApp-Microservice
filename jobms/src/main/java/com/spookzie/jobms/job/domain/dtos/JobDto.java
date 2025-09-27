@@ -1,8 +1,11 @@
 package com.spookzie.jobms.job.domain.dtos;
 
 import com.spookzie.jobms.job.domain.external.Company;
+import com.spookzie.jobms.job.domain.external.Review;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 
 @Getter
@@ -17,4 +20,5 @@ public class JobDto
     private String location;
 
     private Company company;
+    private List<Review> review;
 }
