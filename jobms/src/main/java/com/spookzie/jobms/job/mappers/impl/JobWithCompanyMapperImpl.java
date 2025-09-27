@@ -1,5 +1,7 @@
 package com.spookzie.jobms.job.mappers.impl;
 
+import com.spookzie.jobms.job.clients.CompanyClient;
+import com.spookzie.jobms.job.clients.ReviewClient;
 import com.spookzie.jobms.job.domain.entities.Job;
 import com.spookzie.jobms.job.domain.dtos.JobDto;
 import com.spookzie.jobms.job.domain.external.Company;
@@ -20,7 +22,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class JobWithCompanyMapperImpl implements JobWithCompanyMapper
 {
-    private final RestTemplate restTemplate;
+    private final CompanyClient companyClient;
+    private final ReviewClient reviewClient;
 
 
     @Override
@@ -37,17 +40,10 @@ public class JobWithCompanyMapperImpl implements JobWithCompanyMapper
         jobDto.setMaxSalary(job.getMaxSalary());
         jobDto.setMinSalary(job.getMinSalary());
         jobDto.setCompany(
-                restTemplate.getForObject(
-                        "http://COMPANY-SERVICE:8081/companies/" + job.getCompanyId(),
-                        Company.class)
+                companyClient.getCompany(job.getCompanyId())
         );
         jobDto.setReview(
-                restTemplate.exchange(
-                        "http://REVIEW-SERVICE:8083/reviews?companyId=" + job.getCompanyId(),
-                        HttpMethod.GET,
-                        null,
-                        new ParameterizedTypeReference<List<Review>>() {}
-                ).getBody()
+                reviewClient.getReviews(job.getCompanyId())
         );
 
         return jobDto;
