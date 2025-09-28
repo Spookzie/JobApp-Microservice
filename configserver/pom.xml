@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.spookzie</groupId>
-	<artifactId>service-reg</artifactId>
+	<artifactId>configserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>service-reg</name>
-	<description>Service registry for our microservices</description>
+	<name>config-server</name>
+	<description>Config Server</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -32,19 +32,12 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-		</dependency>
-		<!-- Force Jersey to a valid version -->
-		<dependency>
-			<groupId>org.glassfish.jersey.core</groupId>
-			<artifactId>jersey-client</artifactId>
-			<version>3.1.7</version>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 
 		<dependency>
@@ -67,10 +60,6 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
