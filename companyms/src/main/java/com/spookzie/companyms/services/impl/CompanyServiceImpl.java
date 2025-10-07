@@ -1,10 +1,13 @@
 package com.spookzie.companyms.services.impl;
 
+import com.spookzie.companyms.CompanymsApplication;
+import com.spookzie.companyms.clients.ReviewClient;
 import com.spookzie.companyms.domain.dtos.ReviewDto;
 import com.spookzie.companyms.domain.entities.Company;
 import com.spookzie.companyms.repositories.CompanyRepository;
 import com.spookzie.companyms.services.CompanyService;
 import jakarta.transaction.Transactional;
+import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +20,7 @@ import java.util.Optional;
 public class CompanyServiceImpl implements CompanyService
 {
     private final CompanyRepository companyRepo;
+    private final ReviewClient reviewClient;
 
 
     /*  GET */
@@ -61,11 +65,22 @@ public class CompanyServiceImpl implements CompanyService
         return null;
     }
 
+    @Transactional
     @Override
     public void updateCompanyRating(ReviewDto reviewDto)
     {
         System.out.println(reviewDto.getDescription());
+
+        Company company = this.companyRepo.findById(reviewDto.getCompanyId())
+                .orElseThrow(
+                        () -> new NotFoundException("Company not found with id " + reviewDto.getCompanyId())
+                );
+
+        double avgRating = this.reviewClient.getAvgRatingForCompany(reviewDto.getCompanyId());
+        company.setRating(avgRating);
+        this.companyRepo.save(company);
     }
+
 
     /*  DELETE  */
     @Transactional

@@ -39,6 +39,17 @@ public class ReviewController
         );
     }
 
+    @GetMapping("/averageRating")
+    public Double getAvgRating(@RequestParam Long companyId)
+    {
+        List<Review> reviews = this.reviewService.findAll(companyId);
+        return reviews
+                .stream()
+                .mapToDouble(Review::getRating)
+                .average()
+                .orElse(0.0);
+    }
+
 
     /*  POST    */
     @PostMapping
