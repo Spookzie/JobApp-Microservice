@@ -20,5 +20,5 @@ public class JobDto
     private String location;
 
     private Company company;
-    private List<Review> review;
+    private List<Review> reviews;
 }
