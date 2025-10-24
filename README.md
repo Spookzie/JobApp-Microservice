@@ -1,12 +1,12 @@
 # JobApp Microservice (Java + Spring Cloud)
 
-A microservice-based application for a job portal, built with **Java 17**, **Spring Boot**, and **Spring Cloud**. This project demonstrates a distributed system with a service registry, API gateway, and separate, containerized services for core functionalities.
+A microservice-based application for a job portal, built with **Java 21**, **Spring Boot**, and **Spring Cloud**. This project demonstrates a distributed system with a service registry, API gateway, and separate, containerized services for core functionalities.
 
 ---
 
 ## 🛠 Tech Stack
 
--   Java 17
+-   Java 21
 -   Spring Boot 3
 -   Spring Cloud
 -   Spring Cloud Gateway (API Gateway)
@@ -27,6 +27,7 @@ A microservice-based application for a job portal, built with **Java 17**, **Spr
 -   **RESTful APIs:** Clear API routes for all CRUD (Create, Read, Update, Delete) operations.
 -   **Inter-service Communication:** Services communicate with each other (e.g., Job service fetching Company data).
 -   **Dockerized Environment:** Full `docker-compose.yml` for building and running all services and databases with a single command.
+-   **Distributed Tracing with Zipkin:** This project uses **Zipkin** to trace requests across microservices. It helps **debug, monitor performance, and identify bottlenecks** by showing the path of requests from the API Gateway through Company, Job, and Review services.
 
 ---
 
@@ -76,6 +77,7 @@ If you choose not to use Docker, you must start the services in the correct orde
 - Inter-service communication
 - Docker containerization for microservices
 - Spring Cloud integration for distributed systems
+- Request tracing using Zipkin
 
 ---
 
